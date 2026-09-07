@@ -1,0 +1,9 @@
+.next/
+node_modules/
+package-lock.json
+AGENTS.md
+CLAUDE.md
+tmp/
+test-results/
+playwright-report/
+public/
