@@ -4,7 +4,9 @@ A complete, configurable clothing storefront built with Next.js App Router, Reac
 
 ## Run locally
 
-Requires Node.js 20.9 or later and npm.
+Requires Node.js 24.x and npm. The Node.js major is pinned in `package.json` so Vercel deployments stay on the same runtime as local development.
+
+`package.json` records version-specific install-script approvals for esbuild and unrs-resolver. After updating either dependency, review its install script and use `npm approve-scripts esbuild unrs-resolver` with a recent npm version to refresh the approvals.
 
 ```sh
 npm install
@@ -137,6 +139,8 @@ The homepage and `/for-business` promote personalised storefronts, order managem
 - Social links lead to the social platforms, not fictional brand accounts. Contact details use a reserved `.example` address. Policy pages describe demo behaviour and must be adapted to the actual business before launch.
 
 ## Verification
+
+Linting uses ESLint 10 with [`@eslint/compat`](https://github.com/eslint/rewrite/tree/main/packages/compat) to preserve the existing Next.js rules. The version-scoped ESLint peer overrides for `eslint-plugin-import`, `eslint-plugin-jsx-a11y` and `eslint-plugin-react` accompany that compatibility layer; remove them when those plugins and the Next.js config support ESLint 10 directly.
 
 ```sh
 npm run typecheck
