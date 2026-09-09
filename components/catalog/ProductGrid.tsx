@@ -7,6 +7,7 @@ export interface ProductGridProps {
   gridVariant?: ProductGridVariant;
   className?: string;
   locale?: string;
+  eager?: boolean;
 }
 
 export function ProductGrid({
@@ -15,6 +16,7 @@ export function ProductGrid({
   gridVariant = "standard",
   className = "",
   locale,
+  eager,
 }: ProductGridProps) {
   return (
     <div
@@ -27,6 +29,7 @@ export function ProductGrid({
           index={index}
           variant={variant}
           locale={locale}
+          eager={eager}
         />
       ))}
     </div>

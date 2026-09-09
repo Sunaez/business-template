@@ -3,7 +3,8 @@ import { Manrope } from "next/font/google";
 import { getThemeStyles } from "@/lib/theme";
 import { getBrandConfig, getCollections, getProducts } from "@/lib/catalog";
 import { CartProvider } from "@/components/commerce/CartProvider";
-import { CartDrawer } from "@/components/commerce/CartDrawer";
+import { CartOverlay } from "@/components/commerce/CartOverlay";
+import { StorefrontProvider } from "@/components/commerce/StorefrontProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { getSiteOrigin, isSiteIndexable } from "@/lib/site";
@@ -66,12 +67,18 @@ export default async function RootLayout({
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
-        <CartProvider brand={brand} products={products}>
-          <Header brand={brand} products={products} collections={collections} />
-          <main id="main-content">{children}</main>
-          <Footer brand={brand} collections={collections} />
-          <CartDrawer />
-        </CartProvider>
+        <StorefrontProvider
+          brand={brand}
+          products={products}
+          collections={collections}
+        >
+          <CartProvider>
+            <Header brand={brand} />
+            <main id="main-content">{children}</main>
+            <Footer brand={brand} collections={collections} />
+            <CartOverlay />
+          </CartProvider>
+        </StorefrontProvider>
       </body>
     </html>
   );

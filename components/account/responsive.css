@@ -1,0 +1,305 @@
+/* Layout refinements shared by the independently loaded account sections. */
+.account-mobile-navigation {
+  display: none;
+}
+.account-page-heading h1 {
+  scroll-margin-top: 120px;
+}
+.account-page-heading h1:focus {
+  outline: none;
+}
+.account-nav > button {
+  font-size: 12px;
+}
+.account-table {
+  font-size: 12px;
+}
+.account-table th {
+  font-size: 9px;
+}
+.account-table__name {
+  font-size: 12px;
+}
+.account-table-product > img,
+.account-stock-product > img,
+.account-low-stock img {
+  flex-shrink: 0;
+}
+.account-low-stock img {
+  width: 48px;
+  height: 60px;
+}
+.account-form-error {
+  font-size: 12px;
+  color: var(--brand-error);
+}
+[data-theme="dark"] .account-form-error {
+  color: #f1a69b;
+}
+.account-route-loading {
+  padding-block: 48px;
+}
+.account-section-loading {
+  min-height: 350px;
+  padding-block: 12px;
+}
+.account-section-loading__rows {
+  display: grid;
+  gap: 18px;
+  margin-top: 26px;
+}
+.account-section-loading__rows > span {
+  display: block;
+  height: 60px;
+  background: var(--brand-surface);
+}
+@media (min-width: 801px) and (min-height: 700px) {
+  .account-sidebar {
+    position: sticky;
+    top: 110px;
+    align-self: start;
+    max-height: calc(100dvh - 130px);
+    overflow-y: auto;
+  }
+}
+@media (max-width: 600px) {
+  .account-workspace {
+    padding-bottom: 45px;
+  }
+  .account-layout {
+    gap: 26px;
+    padding-top: 20px;
+  }
+  .account-identity {
+    margin-bottom: 17px;
+  }
+  .account-mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .account-mobile-navigation > span {
+    font-size: 9px;
+    color: var(--brand-muted);
+  }
+  .account-mobile-navigation select {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    font-size: 16px;
+    color: var(--brand-text);
+    background: var(--brand-surface);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--button-radius);
+  }
+  .account-nav {
+    display: none;
+  }
+  .account-page-heading .eyebrow {
+    margin-bottom: 12px;
+  }
+  .account-page-heading h1 + p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .account-page-heading {
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .account-section {
+    margin-top: 30px;
+  }
+  .account-text-button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .account-section-heading > .account-text-button {
+    font-size: 11px;
+  }
+  .account-section-heading {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .account-section-heading p:not(.eyebrow) {
+    font-size: 12px;
+  }
+  .account-heart-button {
+    width: 40px;
+    height: 40px;
+    top: 6px;
+    right: 6px;
+  }
+  .account-wishlist-grid .product-card__badge {
+    max-width: calc(100% - 54px);
+  }
+  .account-wishlist-grid .product-card__heading h3 {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .account-status {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+  .account-order-card__header strong {
+    font-size: 13px;
+  }
+  .account-order-card__header div > span,
+  .account-order-card__description > p,
+  .account-progress li,
+  .account-order-card__footer > span {
+    font-size: 11px;
+  }
+  .account-order-card__description > strong {
+    font-size: 13px;
+  }
+  .account-order-card__description strong > span {
+    font-size: 11px;
+  }
+  .account-order-card__footer {
+    align-items: center;
+  }
+  .account-metrics {
+    margin-bottom: 26px;
+  }
+  .account-metrics[data-count="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .account-metrics[data-count="3"] .account-metric {
+    padding-inline: 10px;
+    border-left: 1px solid var(--brand-border);
+  }
+  .account-metrics[data-count="3"] .account-metric:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .account-metrics[data-count="3"] .account-metric:last-child {
+    grid-column: auto;
+    padding-right: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+  .account-metrics[data-count="3"] .account-metric > strong {
+    font-size: clamp(23px, 6vw, 30px);
+    white-space: nowrap;
+  }
+  .account-metric > button {
+    min-height: 36px;
+    align-items: flex-start;
+  }
+  .account-metric > button > svg {
+    display: none;
+  }
+  .account-attention {
+    padding: 18px;
+  }
+  .account-attention p {
+    font-size: 12px;
+  }
+  .account-table-scroll {
+    overflow: visible;
+  }
+  .account-table {
+    display: block;
+    white-space: normal;
+  }
+  .account-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .account-table tbody {
+    display: grid;
+    gap: 14px;
+  }
+  .account-table tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(95px, auto);
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid var(--brand-border);
+  }
+  .account-table td,
+  .account-table td:first-child,
+  .account-table td:last-child {
+    display: block;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+    font-size: 13px;
+    text-align: left;
+  }
+  .account-table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 5px;
+    font-size: 10px;
+    line-height: 1.6;
+    color: var(--brand-muted);
+  }
+  .account-table .account-row-title {
+    grid-column: 1 / -1;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--brand-border);
+  }
+  .account-table .account-table__name {
+    font-size: 13px;
+    min-height: 32px;
+  }
+  .account-table td > small,
+  .account-table-product small {
+    font-size: 11px;
+    overflow-wrap: anywhere;
+  }
+  .account-table-product > span {
+    min-width: 0;
+  }
+  .account-table .account-row-action {
+    justify-self: end;
+    align-self: center;
+  }
+  .account-table .account-row-action .icon-button {
+    width: 44px;
+    height: 44px;
+    background: var(--brand-surface);
+  }
+  .account-table .account-row-action .account-text-button {
+    padding: 10px 13px;
+    background: var(--brand-surface);
+  }
+  .account-orders-table .account-row-status {
+    justify-self: end;
+    align-self: start;
+  }
+  .account-inventory-table .account-row-status {
+    align-self: center;
+  }
+  .account-customers-table .account-row-title {
+    grid-column: 1 / -1;
+  }
+  .account-low-stock strong {
+    font-size: 12px;
+  }
+  .account-low-stock small {
+    font-size: 11px;
+  }
+  .account-stock-save {
+    padding-bottom: calc(22px + env(safe-area-inset-bottom));
+  }
+  .account-drawer-body {
+    padding-bottom: calc(22px + env(safe-area-inset-bottom));
+  }
+  .account-drawer-body .account-fine-print {
+    font-size: 11px;
+  }
+  .account-address-card address {
+    font-size: 13px;
+  }
+  .account-checkbox strong {
+    font-size: 13px;
+  }
+  .account-checkbox small {
+    font-size: 12px;
+  }
+}

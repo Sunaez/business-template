@@ -107,6 +107,18 @@ textarea {
   white-space: nowrap;
   border: 0;
 }
+.overlay-loading {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  z-index: 100;
+  padding: 14px 22px;
+  background: var(--brand-background);
+  color: var(--brand-text);
+  border: 1px solid var(--brand-border);
+  box-shadow: 0 4px 24px #00000012;
+  font-size: 13px;
+}
 .skip-link {
   position: fixed;
   top: 8px;

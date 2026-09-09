@@ -36,7 +36,7 @@ Replace demo photographs with accurate images for **every colour and pack config
 
 ## Publish and connect
 
-1. Deploy a real store with working payments, order processing, business contact details, delivery and return policies. This template's checkout and order storage are currently local demonstrations; the business features page advertises order management integration as a service, not an existing merchant dashboard.
+1. Deploy a real store with working payments, order processing, business contact details, delivery and return policies. This template's checkout and account dashboards are local demonstrations; production order management still requires a backend integration.
 2. Set `NEXT_PUBLIC_SITE_URL=https://your-actual-domain.com`, `SITE_INDEXING_ENABLED=true` and `GOOGLE_MERCHANT_ENABLED=true` in the deployment environment, then rebuild/redeploy. The URL must be an origin without a path. It controls feed links and metadata; incoming request host headers are not used. Ensure the host/CDN does not block Google from fetching product pages, images or the feed.
 3. Mark each reviewed real product `merchant.enabled: true`. Do not simply enable the demo catalogue.
 4. In Google Merchant Center, verify/claim the storefront domain and configure the sales country, currency, shipping and returns to match the store. Shipping rules are managed in Merchant Center, including the free-delivery order threshold; they are not guessed per feed item.

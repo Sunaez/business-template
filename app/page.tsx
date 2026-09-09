@@ -81,6 +81,7 @@ function ProductSection({
         </Link>
       </div>
       <ProductGrid
+        eager={false}
         products={products}
         variant={brand.layout.productCard}
         gridVariant={brand.layout.productGrid}

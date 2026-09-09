@@ -37,7 +37,7 @@ export function HeroFullBleed({ hero }: HeroProps) {
         src={hero.image.src}
         alt={hero.image.alt}
         fill
-        priority
+        preload
         sizes="100vw"
       />
       <div className="hero-shade" />
@@ -61,7 +61,7 @@ export function HeroSplit({ hero }: HeroProps) {
           src={hero.image.src}
           alt={hero.image.alt}
           fill
-          priority
+          preload
           sizes="(max-width: 760px) 100vw, 55vw"
         />
       </div>
@@ -81,7 +81,7 @@ export function HeroEditorial({ hero }: HeroProps) {
           src={hero.image.src}
           alt={hero.image.alt}
           fill
-          priority
+          preload
           sizes="(max-width: 760px) 100vw, 60vw"
         />
       </div>

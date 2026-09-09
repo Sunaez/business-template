@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ProductCardImages } from "./ProductCardImages";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { formatPrice } from "@/lib/pricing";
@@ -10,6 +10,8 @@ export interface ProductCardProps {
   variant?: ProductCardVariant;
   index?: number;
   locale?: string;
+  eager?: boolean;
+  sizes?: string;
 }
 
 export function ProductCard({
@@ -17,6 +19,8 @@ export function ProductCard({
   variant = "minimal",
   index = 0,
   locale,
+  eager = index < 4,
+  sizes = "(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 24vw",
 }: ProductCardProps) {
   const primaryImage = product.images[0];
   const secondaryImage = product.images[1];
@@ -51,26 +55,12 @@ export function ProductCard({
         href={`/product/${product.slug}`}
         aria-label={`View ${product.name}`}
       >
-        {primaryImage && (
-          <Image
-            src={primaryImage.src}
-            alt={primaryImage.alt}
-            fill
-            sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 24vw"
-            className="product-card__image product-card__image--primary"
-            loading={index < 4 ? "eager" : "lazy"}
-          />
-        )}
-        {secondaryImage && (
-          <Image
-            src={secondaryImage.src}
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="(max-width: 640px) 46vw, (max-width: 1000px) 30vw, 24vw"
-            className="product-card__image product-card__image--secondary"
-          />
-        )}
+        <ProductCardImages
+          primary={primaryImage}
+          secondary={secondaryImage}
+          sizes={sizes}
+          eager={eager}
+        />
         {badge && <span className="product-card__badge">{badge}</span>}
         <span className="product-card__quick-add">
           {inStock ? "Choose options" : "View product"}

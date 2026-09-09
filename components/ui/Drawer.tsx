@@ -28,13 +28,17 @@ export function Drawer({
   useEffect(() => {
     const dialog = ref.current;
     if (!dialog) return;
+    const trigger = document.activeElement;
     if (open && !dialog.open) dialog.showModal();
     if (!open && dialog.open) dialog.close();
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      if (dialog.open) dialog.close();
       document.body.style.overflow = previousOverflow;
+      if (trigger instanceof HTMLElement && trigger.isConnected)
+        trigger.focus({ preventScroll: true });
     };
   }, [open]);
 

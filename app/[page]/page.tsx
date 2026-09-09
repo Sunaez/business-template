@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, UserRound } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { getBrandConfig } from "@/lib/catalog";
 import { formatPrice } from "@/lib/pricing";
 import type { Brand } from "@/types";
@@ -15,7 +15,6 @@ const pageTitles: Record<string, string> = {
   "shipping-returns": "Shipping & returns",
   privacy: "Privacy policy",
   terms: "Terms & conditions",
-  account: "Your account",
 };
 export const dynamicParams = false;
 interface ContentPageProps {
@@ -32,7 +31,6 @@ export async function generateMetadata({
   const { page } = await params;
   return {
     title: pageTitles[page] ?? "Page not found",
-    ...(page === "account" ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
@@ -352,41 +350,6 @@ function Terms({ brand }: { brand: Brand }) {
   );
 }
 
-function Account({ brand }: { brand: Brand }) {
-  return (
-    <div className="content-page container">
-      <div className="account-placeholder">
-        <div className="account-placeholder__icon">
-          <UserRound size={24} strokeWidth={1.3} aria-hidden="true" />
-        </div>
-        <p className="eyebrow">Your space at {brand.name}</p>
-        <h1>Good to have you here.</h1>
-        <p>
-          Customer accounts are coming in a future version of this storefront.
-          This is where you’ll find your orders, saved addresses, and favourite
-          pieces.
-        </p>
-        <p>
-          You can explore the collection and try the demo checkout as a guest
-          today.
-        </p>
-        <div className="account-placeholder__actions">
-          <Link href="/shop" className="button">
-            Explore the collection
-            <ArrowUpRight size={14} aria-hidden="true" />
-          </Link>
-          <Link href="/contact" className="button button-outline">
-            Get in touch
-          </Link>
-        </div>
-        <p className="account-placeholder__note">
-          Demo preview · No account or sign-in is available yet.
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export default async function ContentPage({ params }: ContentPageProps) {
   const { page } = await params;
   if (!Object.hasOwn(pageTitles, page)) notFound();
@@ -402,8 +365,6 @@ export default async function ContentPage({ params }: ContentPageProps) {
       return <Privacy brand={brand} />;
     case "terms":
       return <Terms brand={brand} />;
-    case "account":
-      return <Account brand={brand} />;
     default:
       notFound();
   }

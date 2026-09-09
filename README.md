@@ -28,6 +28,7 @@ For production, set `NEXT_PUBLIC_SITE_URL` to the storefront's actual origin. Th
 - Responsive product galleries, thumbnails, keyboard controls, zoom, hover images, alternate white tee photography and recently viewed products.
 - Tenant-scoped cart persistence, cross-tab cart updates, quantities, removal, cart drawer, full cart, delivery estimates and free-shipping progress.
 - Validated demo checkout, standard and express delivery, locally saved order confirmation and order deletion. Prices and inventory are re-resolved through a dedicated checkout adapter.
+- Demo customer and admin accounts with personal order history, tracking previews, wishlist, saved addresses, profile preferences, order management, CSV exports and variant stock controls.
 - Mobile menu and filters, swipeable galleries, a fixed purchase bar with safe-area padding, readable form inputs, accessible modal dialogs, focus styles and reduced-motion support.
 
 ## Pages
@@ -42,7 +43,9 @@ For production, set `NEXT_PUBLIC_SITE_URL` to the storefront's actual origin. Th
 | Cart                 | `/cart`                                                |
 | Checkout             | `/checkout`                                            |
 | Order confirmation   | `/order-confirmation`                                  |
-| Account placeholder  | `/account`                                             |
+| Demo account chooser | `/account`                                             |
+| Customer account     | `/account/customer`                                    |
+| Admin dashboard      | `/account/admin`                                       |
 | Brand story          | `/about`                                               |
 | Contact              | `/contact`                                             |
 | Size guide           | `/size-guide`                                          |
@@ -103,9 +106,22 @@ Pages read through `getProducts()`, `getProductBySlug()`, `getCollections()` and
 
 All monetary values are **integer minor units**: `3400` means £34. Generic options use names and values; variants contain `selectedOptions`, SKU, stock, availability and optional price/image overrides. The tote's `Pack size: Pair` demonstrates a £42 override; cargo trousers demonstrate a third `Length` option. The black tee in M has four units; black L has none.
 
-To connect Supabase, replace the async implementations in `lib/catalog.ts`, resolve the tenant from a trusted domain mapping, and enforce the same tenant boundary with database RLS. Do not accept a client-supplied tenant ID as authorization. No SaaS backend, authentication or merchant dashboard has been implemented.
+To connect Supabase, replace the async implementations in `lib/catalog.ts`, resolve the tenant from a trusted domain mapping, and enforce the same tenant boundary with database RLS. Do not accept a client-supplied tenant ID as authorization. The account and merchant dashboard are visual demos; no SaaS backend or authentication has been implemented.
 
 To connect Stripe/Stripe Connect, implement `CheckoutGateway` through a server endpoint that re-prices products, validates/reserves inventory and creates a payment session. Keep credentials and fee calculations on the server. Mark an order paid only after a verified webhook. The local adapter intentionally makes no payment requests and reserves no real inventory.
+
+## Explore the demo accounts
+
+Open **`/account`** from the header account icon or the mobile menu. Choose either fictional account; no password is required.
+
+- **Alex Morgan (customer):** three personal orders, order detail and tracking previews, four wishlist pieces, two saved addresses, editable profile details and email preferences.
+- **Jamie Taylor (admin):** sample order totals, pending fulfilment, customer records, searchable/filterable orders, status updates, CSV export, and stock adjustments for every size and colour in the existing catalogue.
+
+Account state is held in memory inside `app/account/layout.tsx`. Use **Switch account** to see an admin order update from the customer's perspective. Refreshing or leaving the account area resets the demo. Wishlist, address and profile edits only affect the preview; stock adjustments do not change the storefront catalogue or checkout. No authentication, payments, shipping, returns, subscriptions or emails are connected. Both demo roles are publicly accessible.
+
+Seed profiles, addresses and orders live in `data/accounts.ts`; types live in `types/account.ts`. `StorefrontProvider` shares the existing catalogue with cart, search and accounts, avoiding a second catalogue payload. `components/account/AccountProviders.tsx` keeps customer, inventory and order state independent; its update functions validate edits through `lib/account.ts`.
+
+The dashboards compose small components in `components/account/customer/`, `admin/`, `orders/` and `shared/`. Secondary sections and drawers load on demand. On phones, a native section selector and stacked admin records keep actions reachable without sideways scrolling. Desktop retains tables and a sticky account sidebar. See [the performance notes](docs/performance.md) for measurements, implementation boundaries and verification.
 
 ## Demo boundaries
 

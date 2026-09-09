@@ -354,47 +354,6 @@
   font-size: 12px;
   letter-spacing: 0;
 }
-.account-placeholder {
-  max-width: 650px;
-  text-align: center;
-  margin: 0 auto;
-  padding: 25px 0 35px;
-}
-.account-placeholder__icon {
-  height: 60px;
-  width: 60px;
-  margin: 0 auto 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--brand-surface);
-  border-radius: 50%;
-}
-.account-placeholder h1 {
-  font-family: var(--font-display, inherit);
-  font-weight: 400;
-  font-size: clamp(34px, 4.5vw, 56px);
-  letter-spacing: -0.04em;
-  margin: 15px 0 22px;
-}
-.account-placeholder > p:not(.eyebrow) {
-  max-width: 480px;
-  margin: 0 auto 25px;
-  font-size: 13px;
-  line-height: 1.9;
-  color: var(--brand-muted);
-}
-.account-placeholder__actions {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-.account-placeholder__note {
-  font-size: 10px !important;
-  margin-top: 30px !important;
-}
 @media (max-width: 1000px) {
   .story-split,
   .story-split__image {

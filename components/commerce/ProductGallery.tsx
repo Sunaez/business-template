@@ -84,7 +84,7 @@ export function ProductGallery({
                 src={item.src}
                 alt={item.alt}
                 fill
-                priority={index === 0}
+                fetchPriority={index === 0 ? "high" : "auto"}
                 loading={index === 0 ? "eager" : "lazy"}
                 sizes="(max-width: 760px) 100vw, 55vw"
               />
@@ -143,23 +143,25 @@ export function ProductGallery({
           </button>
         ))}
       </div>
-      <Drawer
-        open={zoomed}
-        onClose={() => setZoomed(false)}
-        title={productName}
-        className="image-zoom-drawer"
-      >
-        <div className="product-gallery__enlarged">
-          {allImages[active] && (
-            <Image
-              src={allImages[active].src}
-              alt={allImages[active].alt}
-              fill
-              sizes="90vw"
-            />
-          )}
-        </div>
-      </Drawer>
+      {zoomed && (
+        <Drawer
+          open
+          onClose={() => setZoomed(false)}
+          title={productName}
+          className="image-zoom-drawer"
+        >
+          <div className="product-gallery__enlarged">
+            {allImages[active] && (
+              <Image
+                src={allImages[active].src}
+                alt={allImages[active].alt}
+                fill
+                sizes="90vw"
+              />
+            )}
+          </div>
+        </Drawer>
+      )}
     </div>
   );
 }

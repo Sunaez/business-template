@@ -14,6 +14,7 @@ import type { Brand, CartItem, Product, ProductVariant } from "@/types";
 import { getVariantPrice } from "@/lib/pricing";
 import { isVariantPurchasable } from "@/lib/variants";
 import { useBrowserReady } from "./useBrowserReady";
+import { useStorefront } from "./StorefrontProvider";
 import "./commerce.css";
 
 export interface CartLine {
@@ -86,15 +87,8 @@ function normalizeCart(value: unknown, products: Product[]): CartItem[] {
   return valid;
 }
 
-export function CartProvider({
-  products,
-  brand,
-  children,
-}: {
-  products: Product[];
-  brand: Brand;
-  children: ReactNode;
-}) {
+export function CartProvider({ children }: { children: ReactNode }) {
+  const { products, brand } = useStorefront();
   const storageKey = `storefront:${brand.businessId}:cart:v1`;
   const [initialCart] = useState(() => {
     if (typeof window === "undefined")
