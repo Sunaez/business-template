@@ -66,9 +66,9 @@ test("business features replace the story and remain accessible on mobile", asyn
     await page.setViewportSize({ width, height: 844 });
     await page.goto("/for-business");
     await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Your business.",
+      "Take your shop online.",
     );
-    await expect(page.locator(".business-feature__item")).toHaveCount(6);
+    await expect(page.locator(".biz-plan-grid article")).toHaveCount(2);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -80,11 +80,13 @@ test("business features replace the story and remain accessible on mobile", asyn
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
     .analyze();
   expect(audit.violations).toEqual([]);
-  await page.locator(".business-feature__cta:visible").click();
-  await expect(page).toHaveURL(/\/contact$/);
-  await expect(
-    page.getByRole("option", { name: "A website for my business" }),
-  ).toHaveCount(1);
+  await page
+    .getByRole("link", { name: "Get my store online", exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/for-business\/start\?intent=store$/);
+  await expect(page.getByLabel("Business name", { exact: true })).toHaveCount(
+    1,
+  );
   await page.goto("/");
   await expect(page.locator(".business-feature__item")).toHaveCount(3);
   await page.locator(".business-feature__cta:visible").click();

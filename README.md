@@ -129,7 +129,7 @@ The dashboards compose small components in `components/account/customer/`, `admi
 
 Google Merchant Center compatibility is available through `/feeds/google.xml`, with a local preview at `/feeds/google.xml?preview=1`. The export includes variant links, prices, stock and configurable product identifiers. See [the setup guide](docs/google-merchant.md) before enabling live publication. The default sample products are excluded from the live feed.
 
-The homepage and `/for-business` promote personalised storefronts, order management integration, Google Shopping and mobile shopping. `/about` permanently redirects to `/for-business`. Edit the copy in `data/brand.ts` under `businessFeatures`.
+The homepage points to `/for-business`, a managed-store service page with demo proof, indicative pricing and FAQs. `/for-business/start` is a dedicated business enquiry flow. `/about` permanently redirects to `/for-business`. Edit the homepage teaser in `data/brand.ts` and the separate service identity, package pricing and sales content in `data/business.ts`. See [the business service guide](docs/business-service.md) for delivery configuration, commercial decisions and honest demo boundaries.
 
 - Checkout saves one demo order in this browser; no payment is taken and no shipment or confirmation email is created.
 - Card payments, Apple Pay, Google Pay, account authentication and discount-code validation are clearly marked placeholders.

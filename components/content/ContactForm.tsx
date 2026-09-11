@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import "./content.css";
+import Link from "next/link";
 
 export function ContactForm({ email }: { email: string }) {
   const [message, setMessage] = useState<{
@@ -76,8 +77,6 @@ export function ContactForm({ email }: { email: string }) {
         What can we help with?
         <select name="subject" defaultValue="Product question">
           <option>Product question</option>
-          <option>A website for my business</option>
-          <option>Order management & Google Shopping</option>
           <option>Sizing & fit</option>
           <option>Shipping & returns</option>
           <option>Press & partnerships</option>
@@ -95,6 +94,16 @@ export function ContactForm({ email }: { email: string }) {
           rows={5}
         />
       </label>
+      <p>
+        Looking for an online store for your business?{" "}
+        <Link
+          href="/for-business/start"
+          style={{ textDecoration: "underline" }}
+        >
+          Use our business enquiry form
+        </Link>
+        .
+      </p>
       <p>
         This is a demo contact form. Your message is prepared in this browser
         and can be opened in your email app.

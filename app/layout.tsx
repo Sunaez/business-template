@@ -7,6 +7,7 @@ import { CartOverlay } from "@/components/commerce/CartOverlay";
 import { StorefrontProvider } from "@/components/commerce/StorefrontProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { BusinessChrome } from "@/components/business/BusinessChrome";
 import { getSiteOrigin, isSiteIndexable } from "@/lib/site";
 import "./globals.css";
 
@@ -73,9 +74,13 @@ export default async function RootLayout({
           collections={collections}
         >
           <CartProvider>
-            <Header brand={brand} />
+            <BusinessChrome slot="header">
+              <Header brand={brand} />
+            </BusinessChrome>
             <main id="main-content">{children}</main>
-            <Footer brand={brand} collections={collections} />
+            <BusinessChrome slot="footer">
+              <Footer brand={brand} collections={collections} />
+            </BusinessChrome>
             <CartOverlay />
           </CartProvider>
         </StorefrontProvider>

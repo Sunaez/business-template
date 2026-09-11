@@ -220,10 +220,10 @@ export const brandConfig: Brand = {
   featuredCollectionSlug: "new-arrivals",
   businessFeatures: {
     eyebrow: "FOR INDEPENDENT BUSINESSES",
-    title: "Your business.\nBuilt to grow.",
+    title: "Your shop, online.\nTaken care of.",
     description:
-      "Turn what makes your business special into an online store that feels like you. From the first impression to the next order, we help you make it yours.",
-    cta: { label: "Let’s build your store", href: "/contact" },
+      "I build and look after websites for independent retailers, from simple product showcases to managed online shops. You deal directly with me.",
+    cta: { label: "Get my store online", href: "/for-business/start" },
     features: [
       {
         title: "A website that’s yours.",
@@ -235,7 +235,7 @@ export const brandConfig: Brand = {
       {
         title: "Online orders, simplified.",
         description:
-          "Make it easy for customers to browse, choose and order. We can connect online order management to keep your day running smoothly.",
+          "Make it easy for customers to browse, choose and order. I can connect online order management to keep your day running smoothly.",
         detail:
           "Plan the right setup for stock, customer details and fulfilment, with the order management and payment integrations your business needs.",
       },
@@ -270,7 +270,7 @@ export const brandConfig: Brand = {
     ],
     closingTitle: "A small business.\nA bigger online presence.",
     closingDescription:
-      "Tell us what you sell and where you want to go. We’ll help shape a website and the integrations that fit your business.",
+      "Tell me what you sell and what you need. I’ll help you choose a website and a level of support that fit your business.",
   },
   story: {
     eyebrow: "LESS, BUT CONSIDERED",
